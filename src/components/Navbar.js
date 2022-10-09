@@ -10,10 +10,11 @@ export default function Navbar() {
         <li className={styles.title}>Owo Mi</li>
 
         <li>
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
           <Link to="/signup">Signup</Link>
+        </li>
+
+        <li>
+          <Link to="/login">Login</Link>
         </li>
       </ul>
     </nav>
