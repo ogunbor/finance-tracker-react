@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSignup } from "../../hooks/useSignup";
 
 // styles
 import styles from "./Signup.module.css";
@@ -7,33 +8,22 @@ export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const { signup, isPending, error } = useSignup();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, password, displayName);
+    signup(email, password, displayName);
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles["signup-form"]}>
       <h2>sign up</h2>
       <label>
-        <span>username:</span>
-        <input
-          type="text"
-          minLength={4}
-          maxLength={10}
-          onChange={(e) => setDisplayName(e.target.value)}
-          value={displayName}
-          required
-        />
-      </label>
-      <label>
         <span>email:</span>
         <input
           type="email"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
-          required
         />
       </label>
       <label>
@@ -42,11 +32,23 @@ export default function Signup() {
           type="password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
-          required
         />
       </label>
-
-      <button className="btn">Sign up</button>
+      <label>
+        <span>username:</span>
+        <input
+          type="text"
+          onChange={(e) => setDisplayName(e.target.value)}
+          value={displayName}
+        />
+      </label>
+      {!isPending && <button className="btn">sign up</button>}
+      {isPending && (
+        <button className="btn" disabled>
+          loading
+        </button>
+      )}
+      {error && <p>{error}</p>}
     </form>
   );
 }
