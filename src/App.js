@@ -33,9 +33,6 @@ function App() {
           </Routes>
         </BrowserRouter>
       )}
-      <footer style={{ textAlign: "center" }}>
-        &copy; <span style={{ color: "Red" }}>Mompei</span> 2022
-      </footer>
     </div>
   );
 }
