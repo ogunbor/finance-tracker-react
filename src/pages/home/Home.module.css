@@ -1,5 +1,5 @@
 .container {
-  display: grid;
+  display: flex;
   grid-template-columns: 2fr 1fr;
   max-width: 960px;
   margin: 60px auto;
@@ -90,4 +90,34 @@
   line-height: 0;
   font-size: 0.9em;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 700px) {
+  .container {
+    flex-direction: column-reverse;
+  }
+
+  .sidebar {
+    padding-left: 10px;
+    padding-right: 20px;
+  }
+  .transactions .name {
+    margin-right: 15px;
+    overflow: visible;
+  }
+  .transactions .amount {
+    margin-right: 15px;
+    margin-left: 0px;
+    overflow: hidden;
+  }
+  .transactions li {
+    padding-left: 10px;
+  }
+  /* .transactions li {
+    display: grid;
+    flex-direction: row-reverse;
+    margin: 30px 10px 10px 10px;
+    padding: 20px;
+    overflow: hidden;
+  } */
 }

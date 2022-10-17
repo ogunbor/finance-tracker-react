@@ -12,8 +12,6 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <ul>
-        <li className={styles.title}>Owo mi</li>
-
         {!user && (
           <>
             <li>
@@ -27,7 +25,10 @@ export default function Navbar() {
 
         {user && (
           <>
-            <li>hello, {user.displayName}</li>
+            <li>
+              <span style={{ color: "red" }}>{user.displayName}'s </span>
+              spends
+            </li>
             <li>
               <button className="btn" onClick={logout}>
                 Logout
